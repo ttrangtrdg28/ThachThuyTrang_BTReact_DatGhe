@@ -4,18 +4,30 @@ import { connect } from "react-redux";
 import { bookingAction } from "../store/actions/bookingAction";
 
 class Ticket extends Component {
+  renderContent = () => {
+    return this.props.element.danhSachGhe.map((item) => {
+      return (
+        <td key={item.soGhe}>
+          <div
+            onClick={() => this.props.booking(item)}
+            className={`ghe ${item.dangChon && "gheDangChon"} ${
+              item.daDat && "gheDaChon"
+            } `}
+          >
+            {item.soGhe}
+          </div>
+        </td>
+      );
+    });
+  };
   render() {
     return (
-      <td>
-        <div
-          onClick={() => this.props.booking(this.props.item)}
-          className={`ghe ${this.props.item.dangChon && "gheDangChon"} ${
-            this.props.item.daDat && "gheDaChon"
-          } `}
-        >
-          {this.props.item.soGhe}
-        </div>
-      </td>
+      <tr>
+        <td style={{ color: "white" }}>
+          <b>{this.props.element.hang}</b>
+        </td>
+        {this.renderContent()}
+      </tr>
     );
   }
 }

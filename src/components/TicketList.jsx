@@ -4,10 +4,8 @@ import { connect } from "react-redux";
 
 class TicketList extends Component {
   renderContent = () => {
-    return this.props.data.map((element) => {
-      return element.danhSachGhe.map((item) => {
-        return <Ticket key={item.soGhe} item={item} />;
-      });
+    return this.props.data.map((element, index) => {
+      return <Ticket key={index} element={element} />;
     });
   };
 
@@ -31,14 +29,7 @@ class TicketList extends Component {
             <th>12</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td align="center" style={{ color: "#fff" }} width={50}>
-              <b>{this.props.data.hang}</b>
-            </td>
-            {this.renderContent()}
-          </tr>
-        </tbody>
+        <tbody>{this.renderContent()}</tbody>
       </table>
     );
   }

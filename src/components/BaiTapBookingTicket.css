@@ -69,7 +69,7 @@
   height: 35px;
   line-height: 30px;
   font-size: 12px;
-  margin: 0 10px;
+  margin: 0 13px;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -78,7 +78,7 @@
   border: 3px solid orange;
   background: orange;
   color: #000;
-  margin: 0 10px;
+  margin: 0 13px;
   cursor: no-drop !important;
   border-radius: 5px;
   width: 45px;
@@ -89,7 +89,7 @@
   background: rgb(109, 238, 109);
   border: 3px solid rgb(109, 238, 109);
   color: #000;
-  margin: 0 10px;
+  margin: 0 13px;
   cursor: pointer;
   border-radius: 5px;
   width: 45px;

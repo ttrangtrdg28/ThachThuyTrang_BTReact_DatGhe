@@ -21,29 +21,32 @@ export const ticketReducer = (state = DEFAULT_STATE, action) => {
       //   data[index].danhSachGhe.dangChon = !data[index].danhSachGhe.dangChon;
       // });
 
-      state.chairList = data.map((element) => {
-        const danhSachGhe = [];
-        element.danhSachGhe.forEach((item) => {
-          danhSachGhe.push({
-            ...item,
-            dangChon:
-              item.soGhe === action.payload.soGhe
-                ? !item.dangChon
-                : item.dangChon,
-          });
-        });
-        return {
-          ...element,
-          danhSachGhe: danhSachGhe,
-        };
-      });
+      // state.chairList = data.map((element) => {
+      //   const danhSachGhe = [];
+      //   element.danhSachGhe.forEach((item) => {
+      //     danhSachGhe.push({
+      //       ...item,
+      //       dangChon:
+      //         item.soGhe === action.payload.soGhe
+      //           ? !item.dangChon
+      //           : item.dangChon,
+      //     });
+      //   });
+      //   return {
+      //     ...element,
+      //     danhSachGhe: danhSachGhe,
+      //   };
+      // });
 
-      // const index = data.findIndex(
-      //   (element) => element.danhSachGhe.soGhe === action.payload.soGhe
-      // );
+      const danhSachGhe = data.map((element) => element.danhSachGhe);
+      console.log(danhSachGhe);
+      const index = danhSachGhe.findIndex(
+        (element) => element.soGhe === action.payload.soGhe
+      );
+      console.log(index);
       // data[index].danhSachGhe.dangChon = !data[index].danhSachGhe.dangChon;
 
-      // state.chairList = data;
+      state.chairList = data;
       break;
   }
   return { ...state };
