@@ -28,7 +28,7 @@ class BookingList extends Component {
 const mapStateToProps = (state) => {
   return {
     bookingList: state.ticketReducer.chairList.filter(
-      (element) => element.dangChon === true
+      (element) => element.danhSachGhe.dangChon === true
     ),
   };
 };

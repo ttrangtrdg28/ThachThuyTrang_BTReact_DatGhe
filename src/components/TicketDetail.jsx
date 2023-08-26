@@ -6,7 +6,7 @@ export default class TicketDetail extends Component {
     return (
       <div>
         <div className="d-flex align-items-center">
-          <div className="gheDuocChon"></div>
+          <div className="gheDaChon"></div>
           <h4 className="pl-2 py-1 text-white ">Ghế đã chọn</h4>
         </div>
 

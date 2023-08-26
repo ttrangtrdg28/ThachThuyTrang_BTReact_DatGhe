@@ -8,9 +8,10 @@ class Ticket extends Component {
     return (
       <td>
         <div
-          onClick={() => this.props.booking(this.props.element)}
-          disabled={this.props.element.daDat}
-          className={`ghe ${this.props.element.dangChon && "gheDangChon"}`}
+          onClick={() => this.props.booking(this.props.item)}
+          className={`ghe ${this.props.item.dangChon && "gheDangChon"} ${
+            this.props.item.daDat && "gheDaChon"
+          } `}
         >
           {this.props.item.soGhe}
         </div>

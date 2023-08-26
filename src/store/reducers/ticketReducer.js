@@ -10,13 +10,40 @@ export const ticketReducer = (state = DEFAULT_STATE, action) => {
     case BOOKING:
       const data = JSON.parse(JSON.stringify(state.chairList));
 
-      const index = data.findIndex(
-        (element) =>
-          element.danhSachGhe.soGhe === action.payload.danhSachGhe.soGhe
-      );
-      data[index].danhSachGhe.dangChon = !data[index].danhSachGhe.dangChon;
+      console.log(data);
 
-      state.chairList = data;
+      console.log(action.payload);
+
+      // data.forEach((element, index) => {
+      //   element.danhSachGhe.find((item) => {
+      //     item.soGhe === action.payload.soGhe;
+      //   });
+      //   data[index].danhSachGhe.dangChon = !data[index].danhSachGhe.dangChon;
+      // });
+
+      state.chairList = data.map((element) => {
+        const danhSachGhe = [];
+        element.danhSachGhe.forEach((item) => {
+          danhSachGhe.push({
+            ...item,
+            dangChon:
+              item.soGhe === action.payload.soGhe
+                ? !item.dangChon
+                : item.dangChon,
+          });
+        });
+        return {
+          ...element,
+          danhSachGhe: danhSachGhe,
+        };
+      });
+
+      // const index = data.findIndex(
+      //   (element) => element.danhSachGhe.soGhe === action.payload.soGhe
+      // );
+      // data[index].danhSachGhe.dangChon = !data[index].danhSachGhe.dangChon;
+
+      // state.chairList = data;
       break;
   }
   return { ...state };

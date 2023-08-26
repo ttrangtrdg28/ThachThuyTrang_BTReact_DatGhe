@@ -6,7 +6,7 @@ class TicketList extends Component {
   renderContent = () => {
     return this.props.data.map((element) => {
       return element.danhSachGhe.map((item) => {
-        return <Ticket key={item.soGhe} item={item} element={element} />;
+        return <Ticket key={item.soGhe} item={item} />;
       });
     });
   };
@@ -32,10 +32,12 @@ class TicketList extends Component {
           </tr>
         </thead>
         <tbody>
-          <td align="center" style={{ color: "#fff" }} width={50}>
-            <b>A</b>
-          </td>
-          {this.renderContent()}
+          <tr>
+            <td align="center" style={{ color: "#fff" }} width={50}>
+              <b>{this.props.data.hang}</b>
+            </td>
+            {this.renderContent()}
+          </tr>
         </tbody>
       </table>
     );
