@@ -15,13 +15,16 @@ class BookingList extends Component {
   };
 
   totalPrice = () => {
-    return this.props.paymentList.reduce((total, element) => {
-      console.log(element);
-      if (element.dangChon) {
-        console.log(element.gia);
-        return (total += element.gia);
+    let totalPrice = 0;
+    this.props.bookingList.forEach((element) => {
+      for (let i = 0; i < element.danhSachGhe.length; i++) {
+        const ghe = element.danhSachGhe[i];
+        if (ghe.dangChon) {
+          totalPrice += parseInt(ghe.gia);
+        }
       }
-    }, 0);
+    });
+    return totalPrice;
   };
 
   render() {
@@ -32,7 +35,7 @@ class BookingList extends Component {
             <tr align="center">
               <th width={100}>Số ghế</th>
               <th width={250}>Giá</th>
-              <th width={150}>Thao tsác</th>
+              <th width={150}>Thao tác</th>
             </tr>
           </thead>
           <tbody>
@@ -41,7 +44,7 @@ class BookingList extends Component {
             <tr>
               <td className="pl-3">Tổng tiền</td>
               <td className="px-3" align="right">
-                {this.totalPrice()}
+                {this.totalPrice().toLocaleString()}
               </td>
               <td></td>
             </tr>
@@ -66,7 +69,6 @@ class BookingList extends Component {
 const mapStateToProps = (state) => {
   return {
     bookingList: state.ticketReducer.chairList,
-    paymentList: state.ticketReducer.paymentList,
   };
 };
 

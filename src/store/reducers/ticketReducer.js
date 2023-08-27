@@ -3,14 +3,12 @@ import { BOOKING, PAYMENT } from "../types/bookingType";
 
 const DEFAULT_STATE = {
   chairList: data,
-  paymentList: [],
 };
 
 export const ticketReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case BOOKING: {
       const data = JSON.parse(JSON.stringify(state.chairList));
-      const dataPayment = JSON.parse(JSON.stringify(state.paymentList));
 
       state.chairList = data.map((element) => {
         const danhSachGhe = [];
@@ -28,14 +26,6 @@ export const ticketReducer = (state = DEFAULT_STATE, action) => {
           danhSachGhe: danhSachGhe,
         };
       });
-
-      const indexPayment = dataPayment.findIndex(
-        (element) => element.soGhe === action.payload.soGhe
-      );
-      if (indexPayment !== -1) {
-        dataPayment.splice(indexPayment, 1);
-      }
-      state.paymentList = dataPayment;
       break;
     }
 
