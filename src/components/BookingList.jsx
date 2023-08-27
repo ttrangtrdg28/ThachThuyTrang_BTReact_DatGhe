@@ -4,7 +4,15 @@ import { connect } from "react-redux";
 
 class BookingList extends Component {
   renderBookingList = () => {
-    return this.props.bookingList.map((booking) => {
+    const list = this.props.bookingList.flatMap(
+      (element) => element.danhSachGhe
+    );
+
+    let itm = list.filter((item) => item.dangChon === true);
+
+    let lst = itm.reduce((total, ticket) => (total + ticket.gia, 0));
+
+    return itm.map((booking) => {
       <BookingDetail key={booking.soGhe} booking={booking} />;
     });
   };
@@ -27,9 +35,7 @@ class BookingList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    bookingList: state.ticketReducer.chairList.filter(
-      (element) => element.danhSachGhe.dangChon === true
-    ),
+    bookingList: state.ticketReducer.chairList,
   };
 };
 
