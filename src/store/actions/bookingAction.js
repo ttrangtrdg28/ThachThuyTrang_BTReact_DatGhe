@@ -1,4 +1,4 @@
-import { BOOKING, PAYMENT } from "../types/bookingType";
+import { BOOKING, DELETE, PAYMENT } from "../types/bookingType";
 
 export const bookingAction = (data) => {
   return {

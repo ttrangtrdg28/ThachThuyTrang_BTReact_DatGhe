@@ -5,11 +5,13 @@ import { connect } from "react-redux";
 class BookingDetail extends Component {
   render() {
     const { soGhe, gia } = this.props.item;
-    console.log(this.props.item);
+
     return (
       <tr>
         <td className="pl-3">{soGhe}</td>
-        <td className="pl-3">{gia}</td>
+        <td className="px-3" align="right">
+          {gia.toLocaleString()}
+        </td>
         <td align="center">
           <button
             className="btn btn-danger my-2"
