@@ -31,6 +31,8 @@ export const ticketReducer = (state = DEFAULT_STATE, action) => {
     }
 
     case PAYMENT: {
+      const data = JSON.parse(JSON.stringify(state.chairList));
+
       break;
     }
   }
