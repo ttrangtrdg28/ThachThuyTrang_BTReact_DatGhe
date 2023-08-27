@@ -1,5 +1,5 @@
 import data from "../../data/danhSachGhe.json";
-import { BOOKING } from "../types/bookingType";
+import { BOOKING, PAYMENT } from "../types/bookingType";
 
 const DEFAULT_STATE = {
   chairList: data,
@@ -7,19 +7,8 @@ const DEFAULT_STATE = {
 
 export const ticketReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
-    case BOOKING:
+    case BOOKING: {
       const data = JSON.parse(JSON.stringify(state.chairList));
-
-      console.log(data);
-
-      console.log(action.payload);
-
-      // data.forEach((element, index) => {
-      //   element.danhSachGhe.find((item) => {
-      //     item.soGhe === action.payload.soGhe;
-      //   });
-      //   data[index].danhSachGhe.dangChon = !data[index].danhSachGhe.dangChon;
-      // });
 
       state.chairList = data.map((element) => {
         const danhSachGhe = [];
@@ -38,16 +27,12 @@ export const ticketReducer = (state = DEFAULT_STATE, action) => {
         };
       });
 
-      // const danhSachGhe = data.map((element) => element.danhSachGhe);
-      // console.log(danhSachGhe);
-      // const index = danhSachGhe.findIndex(
-      //   (element) => element.soGhe === action.payload.soGhe
-      // );
-      // console.log(index);
-      // data[index].danhSachGhe.dangChon = !data[index].danhSachGhe.dangChon;
-
-      // state.chairList = data;
       break;
+    }
+
+    case PAYMENT: {
+      break;
+    }
   }
   return { ...state };
 };
